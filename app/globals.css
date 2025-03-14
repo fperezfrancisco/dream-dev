@@ -1,26 +1,46 @@
 @import "tailwindcss";
+@import "@fontsource-variable/noto-sans-sc";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-family: "Noto Sans SC Variable", sans-serif;
+}
+
+:root {
+  --color-primary: #0064d6;
+  --color-primary-700: #004da5;
+  --color-primary-300: #2d8fff;
+  --color-secondary-green: #4cd792;
+}
+
+@theme {
+  --color-primary: #0064d6;
+  --color-primary-700: #004da5;
+  --color-primary-300: #2d8fff;
+  --color-secondary-green: #4cd792;
+}
+
+.tightLetters {
+  letter-spacing: -1.5%;
+}
+
+.xlTightLetters {
+  letter-spacing: -2px;
+}
+
+#heroSection {
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    #4cd792 47.53%,
+    #0064d6 95.06%
+  );
 }
