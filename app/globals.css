@@ -62,3 +62,9 @@ body {
     #0064d6 95.06%
   );
 }
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .border-fix {
+    border-width: 4px;
+  }
+}
