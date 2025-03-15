@@ -19,7 +19,7 @@ const PortfolioPreviewCard = ({ project, setModal, setProject }) => {
       className="bg-primary aspect-[3/2] flex flex-col items-center p-2 rounded-2xl min-w-[250px] max-w-[350px] grow cursor-pointer hover:scale-105 transition-all ease-out duration-300"
     >
       <div className="w-full aspect-[3/2] bg-neutral-100 rounded-xl overflow-hidden object-cover">
-        <Image alt="thumbnail image" src={project?.thumbnail} />
+        <Image alt="thumbnail image" src={project?.thumbnail} width={800} />
       </div>
       <p className="text-white mt-2">
         {project?.title ? project.title : "No project name"}

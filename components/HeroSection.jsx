@@ -77,7 +77,8 @@ const HeroSection = () => {
             <Image
               src={heart}
               className="size-[120px] md:size-[160px] lg:size-[200px] scale-85 translate-y-8 translate-x-8"
-              alt="cloud icon"
+              alt="heart"
+              width={100}
             />
           </motion.div>
           <motion.div
@@ -95,6 +96,7 @@ const HeroSection = () => {
               src={cloud}
               className="size-[120px] md:size-[160px] lg:size-[240px]"
               alt="cloud icon"
+              width={300}
             />
           </motion.div>
           <motion.div
@@ -112,6 +114,7 @@ const HeroSection = () => {
               src={trending}
               className="size-[120px] md:size-[160px] lg:size-[200px] translate-y-6 -translate-x-6"
               alt="cloud icon"
+              width={200}
             />
           </motion.div>
         </div>

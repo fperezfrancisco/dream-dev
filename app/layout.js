@@ -1,7 +1,7 @@
 import Image from "next/image";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
-import gradientDecor from "@/app/assets/linear-gradient-hero.png";
+import gradientDecor from "@/public/linear-gradient-hero.png";
 import Footer from "@/components/Footer";
 
 export const metadata = {
@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
           content="small business website design, custom website development, responsive websites, professional websites for small businesses, web design services, affordable web development, website solutions for entrepreneurs"
         />
       </head>
-
       <body className="w-full h-full min-h-screen max-w-screen overflow-x-hidden">
         <Navigation />
         <Image
@@ -28,7 +27,9 @@ export default function RootLayout({ children }) {
           id="gradientDecor"
           src={gradientDecor}
           className="absolute top-[50px] md:top-0 left-0 right-0 lg:h-[500px] mx-auto w-full -z-10"
+          width={250}
         />
+
         {children}
         <Footer />
       </body>

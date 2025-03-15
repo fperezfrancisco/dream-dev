@@ -23,7 +23,7 @@ const AboutSection = () => {
               duration: 0.4, // 0.6s duration for a smooth feel
             }}
           >
-            <Image src={aboutImg} alt="Francisco Cartoon" />
+            <Image src={aboutImg} width={1000} alt="Francisco Cartoon" />
           </motion.div>
         </div>
         <motion.div
