@@ -1,9 +1,59 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Button from "./ui/Button";
 import Image from "next/image";
 import checklist from "@/app/assets/checklist-illustration.png";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
+  const [formName, setFormName] = useState("");
+  const [formEmail, setFormEmail] = useState("");
+  const [formBusiness, setFormBusiness] = useState("");
+  const [formMessage, setFormMessage] = useState("");
+  const [formSending, setFormSending] = useState(false);
+
+  const collectData = (e) => {
+    e.preventDefault();
+
+    setFormSending(true);
+
+    console.log({
+      formName,
+      formEmail,
+      formBusiness,
+      formMessage,
+    });
+
+    const serviceID = "service_cl2r24u";
+    const templateID = "template_6da7rqi";
+    const publicKey = "B5m78mM5hASikgXT_";
+
+    const templateParams = {
+      name: formName,
+      email: formEmail,
+      message: formMessage,
+    };
+
+    setTimeout(() => {
+      emailjs
+        .send(serviceID, templateID, templateParams, publicKey)
+        .then((res) => {
+          setFormSending(false);
+          console.log("Success");
+          alert("Message Sent successfully!");
+          setFormName("");
+          setFormEmail("");
+          setFormBusiness("");
+          setFormMessage("");
+        })
+        .catch((error) => {
+          console.log("error: ", error);
+          setFormSending(false);
+          alert("Something went wrong, please try again later!");
+        });
+    }, 3000);
+  };
+
   return (
     <div
       id="contact"
@@ -25,65 +75,85 @@ const ContactSection = () => {
           />
         </div>
         <div className="w-full max-w-[600px] py-4">
-          <form action="" className="w-full max-w-[500px]">
-            <ul className="w-full flex flex-col gap-4 mb-6">
-              <li className="w-full flex relative">
-                <label
-                  htmlFor="name"
-                  className="text-primary font-semibold absolute top-4 left-6"
-                >
-                  Name:
-                </label>
-                <input
-                  required
-                  id="name"
-                  type="text"
-                  className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-20"
-                />
-              </li>
-              <li className="w-full flex relative">
-                <label
-                  htmlFor="email"
-                  className="text-primary font-semibold absolute top-4 left-6"
-                >
-                  Email:
-                </label>
-                <input
-                  required
-                  id="email"
-                  type="email"
-                  className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-20"
-                />
-              </li>
-              <li className="w-full flex relative">
-                <label
-                  htmlFor="businessType"
-                  className="text-primary font-semibold absolute top-4 left-6"
-                >
-                  Business Type:
-                </label>
-                <input
-                  id="businessType"
-                  type="text"
-                  className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-36"
-                />
-              </li>
-              <li className="w-full flex relative">
-                <label
-                  htmlFor="message"
-                  className="text-primary font-semibold absolute top-4 left-6"
-                >
-                  Message:
-                </label>
-                <textarea
-                  id="message"
-                  rows={6}
-                  className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-28"
-                ></textarea>
-              </li>
-            </ul>
-            <Button primary={true} title={"SEND MESSAGE"} widthFull={true} />
-          </form>
+          {formSending ? (
+            <div>
+              <p className="text-2xl font-semibold animate-pulse">
+                Sending your form ...{" "}
+              </p>
+            </div>
+          ) : (
+            <form
+              action=""
+              className="w-full max-w-[500px]"
+              onSubmit={(e) => collectData(e)}
+            >
+              <ul className="w-full flex flex-col gap-4 mb-6">
+                <li className="w-full flex relative">
+                  <label
+                    htmlFor="name"
+                    className="text-primary font-semibold absolute top-4 left-6"
+                  >
+                    Name:
+                  </label>
+                  <input
+                    value={formName}
+                    onChange={(e) => setFormName(e.target.value)}
+                    required
+                    id="name"
+                    type="text"
+                    className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-20"
+                  />
+                </li>
+                <li className="w-full flex relative">
+                  <label
+                    htmlFor="email"
+                    className="text-primary font-semibold absolute top-4 left-6"
+                  >
+                    Email:
+                  </label>
+                  <input
+                    required
+                    value={formEmail}
+                    onChange={(e) => setFormEmail(e.target.value)}
+                    id="email"
+                    type="email"
+                    className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-20"
+                  />
+                </li>
+                <li className="w-full flex relative">
+                  <label
+                    htmlFor="businessType"
+                    className="text-primary font-semibold absolute top-4 left-6"
+                  >
+                    Business Type:
+                  </label>
+                  <input
+                    value={formBusiness}
+                    onChange={(e) => setFormBusiness(e.target.value)}
+                    id="businessType"
+                    type="text"
+                    className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-36"
+                  />
+                </li>
+                <li className="w-full flex relative">
+                  <label
+                    htmlFor="message"
+                    className="text-primary font-semibold absolute top-4 left-6"
+                  >
+                    Message:
+                  </label>
+                  <textarea
+                    value={formMessage}
+                    onChange={(e) => setFormMessage(e.target.value)}
+                    id="message"
+                    rows={6}
+                    className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-28"
+                  ></textarea>
+                </li>
+              </ul>
+              <Button primary={true} title={"SEND MESSAGE"} widthFull={true} />
+            </form>
+          )}
         </div>
       </div>
     </div>

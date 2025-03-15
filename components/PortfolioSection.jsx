@@ -1,6 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import PortfolioPreviewCard from "./ui/PortfolioPreviewCard";
+import brewThumbnail from "@/app/assets/brew-thumbnail.png";
+import ProjectModal from "./ui/ProjectModal";
+import brewPreview from "@/app/assets/brew-haven-mock.png";
+import coreThumbnail from "@/app/assets/core-thumbnail.png";
+import corePreview from "@/app/assets/core-mock.png";
+import trilogyThumbnail from "@/app/assets/trilogy-thumnail.png";
 
 // Hook
 function useWindowSize() {
@@ -36,15 +42,25 @@ function useWindowSize() {
 
 const PortfolioSection = () => {
   const portfolioList = [
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
+    {
+      title: "Brew Haven Coffee",
+      thumbnail: brewThumbnail,
+      preview: brewPreview,
+    },
+    {
+      title: "Core Strength Fitness",
+      thumbnail: coreThumbnail,
+      preview: corePreview,
+    },
+    {
+      title: "Trilogy Soccer",
+      liveSite: "https://www.trilogysoccer.com",
+      thumbnail: trilogyThumbnail,
+    },
   ];
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [project, setProject] = useState();
 
   const size = useWindowSize();
 
@@ -59,24 +75,52 @@ const PortfolioSection = () => {
             Portfolio
           </h2>
         </div>
-        <div className="w-full flex flex-wrap gap-6 xl:gap-12 items-center justify-center">
+        <div className="w-full flex flex-wrap gap-6 xl:gap-8 items-center justify-center">
           {size.width &&
             size.width > 1170 &&
-            portfolioList.map((project) => <PortfolioPreviewCard />)}
+            portfolioList.map((project, index) => (
+              <PortfolioPreviewCard
+                key={index}
+                project={project}
+                setProject={setProject}
+                setModal={setModalOpen}
+              />
+            ))}
 
           {size.width > 768 &&
             size.width <= 1170 &&
             portfolioList
               .slice(0, 6)
-              .map((project) => <PortfolioPreviewCard />)}
+              .map((project, index) => (
+                <PortfolioPreviewCard
+                  key={index}
+                  project={project}
+                  setProject={setProject}
+                  setModal={setModalOpen}
+                />
+              ))}
 
           {size.width > 0 &&
             size.width <= 768 &&
             portfolioList
               .slice(0, 4)
-              .map((project) => <PortfolioPreviewCard />)}
+              .map((project, index) => (
+                <PortfolioPreviewCard
+                  key={index}
+                  project={project}
+                  setProject={setProject}
+                  setModal={setModalOpen}
+                />
+              ))}
         </div>
       </div>
+      {modalOpen && (
+        <ProjectModal
+          setModal={setModalOpen}
+          modalOpen={modalOpen}
+          project={project}
+        />
+      )}
     </div>
   );
 };

@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import aboutImg from "@/app/assets/about-illustration.png";
 import cloudDecor from "@/app/assets/cloud-decorations-small.png";
+import { motion } from "motion/react";
+import { easeOut } from "motion";
 
 const AboutSection = () => {
   return (
@@ -11,31 +14,52 @@ const AboutSection = () => {
     >
       <div className="w-full max-w-[1440px]  text-white flex flex-col-reverse items-center gap-8 min-[900px]:gap-2 min-[900px]:flex-row min-[900px]:justify-between min-[900px]:items-center">
         <div className="flex max-w-[500px] w-full">
-          <Image src={aboutImg} alt="Francisco Cartoon" />
+          <motion.div
+            initial={{ x: -100, opacity: 0 }} // Start 100px to the right and invisible
+            whileInView={{ x: 0, opacity: 1 }} // Move to original position and fade in
+            transition={{
+              type: "tween", // Smooth transition
+              ease: "easeOut", // Easing type
+              duration: 0.4, // 0.6s duration for a smooth feel
+            }}
+          >
+            <Image src={aboutImg} alt="Francisco Cartoon" />
+          </motion.div>
         </div>
-        <div className="flex flex-col items-start w-full max-w-[600px] min-[1200px]:max-w-[650px]">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-4 lg:mb-12">
-            About Dream Dev Solutions
-          </h2>
-          <p className="w-full max-w-[600px] mb-10">
-            Hi, I am Francisco, the founder of Dream Dev Solutions. Over the
-            last 4 years, I have been perfecting my craft in front-end
-            development and design, working with real-world clients to bring
-            their websites to life. I specialize in creating modern, responsive,
-            and conversion-driven websites that help businesses stand out
-            online. From clean landing pages to multi-page platforms, I combine
-            technical expertise with a keen eye for design to deliver fast,
-            modern, and user-friendly experiences.
-          </p>
-          <ul className="flex flex-col w-fit gap-4 items-start pl-6 list-disc ">
-            <li className="font-medium text-lg">Fast & Modern Web Design</li>
-            <li className="font-medium text-lg">
-              Web Development Production & Testing
-            </li>
-            <li className="font-medium text-lg">SEO Strategist</li>
-            <li className="font-medium text-lg">Logo/Brand Design</li>
-          </ul>
-        </div>
+        <motion.div
+          initial={{ x: 100, opacity: 0 }} // Start 100px to the right and invisible
+          whileInView={{ x: 0, opacity: 1 }} // Move to original position and fade in
+          transition={{
+            delay: 0.25,
+            type: "tween", // Smooth transition
+            ease: "easeOut", // Easing type
+            duration: 0.6, // 0.6s duration for a smooth feel
+          }}
+        >
+          <div className="flex flex-col items-start w-full max-w-[600px] min-[1200px]:max-w-[650px]">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-4 lg:mb-12">
+              About Dream Dev Solutions
+            </h2>
+            <p className="w-full max-w-[600px] mb-10">
+              Hi, I am Francisco, the founder of Dream Dev Solutions. Over the
+              last 4 years, I have been perfecting my craft in front-end
+              development and design, working with real-world clients to bring
+              their websites to life. I specialize in creating modern,
+              responsive, and conversion-driven websites that help businesses
+              stand out online. From clean landing pages to multi-page
+              platforms, I combine technical expertise with a keen eye for
+              design to deliver fast, modern, and user-friendly experiences.
+            </p>
+            <ul className="flex flex-col w-fit gap-4 items-start pl-6 list-disc ">
+              <li className="font-medium text-lg">Fast & Modern Web Design</li>
+              <li className="font-medium text-lg">
+                Web Development Production & Testing
+              </li>
+              <li className="font-medium text-lg">SEO Strategist</li>
+              <li className="font-medium text-lg">Logo/Brand Design</li>
+            </ul>
+          </div>
+        </motion.div>
       </div>
 
       <Image
