@@ -101,7 +101,7 @@ const ContactSection = () => {
                     required
                     id="name"
                     type="text"
-                    className="border-2 w-full border-black rounded-2xl py-4 px-6 pl-20"
+                    className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-20"
                   />
                 </li>
                 <li className="w-full flex relative">
