@@ -101,7 +101,7 @@ const ContactSection = () => {
                     required
                     id="name"
                     type="text"
-                    className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-20"
+                    className="outline-2 border-0 sm:outline-0 sm:border-2 w-full border-primary rounded-2xl py-4 px-6 pl-20"
                   />
                 </li>
                 <li className="w-full flex relative">
@@ -117,7 +117,7 @@ const ContactSection = () => {
                     onChange={(e) => setFormEmail(e.target.value)}
                     id="email"
                     type="email"
-                    className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-20"
+                    className="outline-2 border-0 sm:outline-0 sm:border-2 w-full border-primary rounded-2xl py-4 px-6 pl-20"
                   />
                 </li>
                 <li className="w-full flex relative">
@@ -132,7 +132,7 @@ const ContactSection = () => {
                     onChange={(e) => setFormBusiness(e.target.value)}
                     id="businessType"
                     type="text"
-                    className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-36"
+                    className="outline-2 border-0 sm:outline-0 sm:border-2 w-full border-primary rounded-2xl py-4 px-6 pl-36"
                   />
                 </li>
                 <li className="w-full flex relative">
@@ -147,7 +147,7 @@ const ContactSection = () => {
                     onChange={(e) => setFormMessage(e.target.value)}
                     id="message"
                     rows={6}
-                    className="border-2 w-full border-primary rounded-2xl py-4 px-6 pl-28"
+                    className="outline-2 border-0 sm:outline-0 sm:border-2 w-full border-primary rounded-2xl py-4 px-6 pl-28"
                   ></textarea>
                 </li>
               </ul>
