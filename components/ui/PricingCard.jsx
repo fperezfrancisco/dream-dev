@@ -3,7 +3,7 @@ import React from "react";
 const PricingCard = ({ serviceObject }) => {
   return (
     <div
-      className="w-[300px] h-[500px] rounded-3xl border-0 outline-4 sm:outline-0 sm:border-4 border-primary bg-white text-primary flex flex-col p-4 gap-4 items-center cursor-pointer hover:scale-110 transition-all ease-out duration-300 border-fix"
+      className="w-[300px] h-[500px] rounded-3xl border-0 outline-4 sm:outline-0 sm:border-4 border-primary bg-white text-primary flex flex-col p-4 gap-4 items-center cursor-pointer hover:scale-110 transition-all ease-out duration-300 "
       style={{ WebkitAppearance: "none" }}
     >
       <h3 className="text-xl font-semibold">{serviceObject.title}</h3>
